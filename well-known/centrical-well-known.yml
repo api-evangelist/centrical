@@ -1,0 +1,57 @@
+generated: '2026-08-09'
+method: probed
+source: live GET probes of every Centrical host reachable without credentials
+note: >-
+  No /.well-known/ discovery surface is published. centrical.com is a WordPress marketing site whose
+  404 handler returns an HTML page for every unknown path, so each row below is a genuine miss, not
+  a soft-404 credited as a hit. powerup.centrical.me is a single-page app that answers HTTP 200 with
+  the same HTML shell for every path including /.well-known/* — those 200s are catch-all responses,
+  NOT documents, and are recorded as such. No file was saved because nothing returned a real
+  document.
+hosts:
+- host: https://centrical.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://support.centrical.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    note: Zendesk help center redirects every unknown path to /hc.
+  - path: /.well-known/agent-card.json
+    status: 302
+  - path: /.well-known/agent.json
+    status: 302
+- host: https://powerup.centrical.me
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    accepted: false
+    note: SPA catch-all HTML shell, not an agent card — rejected per the A2A probe rule.
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    accepted: false
+    note: SPA catch-all HTML shell — rejected.
+  - path: /openapi.json
+    status: 200
+    content_type: text/html
+    accepted: false
+    note: SPA catch-all HTML shell, does not parse as OpenAPI — rejected.

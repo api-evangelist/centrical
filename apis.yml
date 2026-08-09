@@ -1,17 +1,35 @@
 aid: centrical
 name: Centrical
-description: 'Centrical is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Centrical (legally Biz-Effective Ltd., founded in Israel in 2013 and known as GamEffective
+  until its 2019 rebrand) sells a performance-experience platform for frontline and contact-center
+  employees. The product combines advanced gamification, personalized microlearning, real-time
+  performance management, AI-assisted coaching, quality management and voice-of-the-employee
+  surveys into a single agent-facing experience, and is used by Microsoft, Verizon Cellular Sales,
+  Teleperformance, Hilton and Synchrony among others. Centrical is integration-heavy rather than
+  developer-facing: it ingests KPI and activity data from CRM, POS, telephony, WFM, VoC and
+  contact-center systems (including a packaged Amazon Connect / Contact Lens integration, a
+  Salesforce AppExchange listing and a Microsoft Teams app) over API, SFTP and email. That data
+  and integration API is documented for contracted customers only — Centrical publishes no public
+  developer portal, API reference, or machine-readable contract.'
 url: https://raw.githubusercontent.com/api-evangelist/centrical/refs/heads/main/apis.yml
+image: https://centrical.com/wp-content/themes/centrical-master/assets/img/favicon/apple-touch-icon.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-09'
 modified: '2026-08-09'
 tags:
 - Company
+- Employee Engagement
+- Performance Management
+- Gamification
+- Microlearning
+- Contact Center
+- Workforce Engagement Management
+- Coaching
+- Quality Management
+- Human Resources
+- SaaS
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +37,50 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/centrical-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/centrical-stock
+  url: https://centrical.com/
+- type: Support
+  url: https://support.centrical.com/hc/en-us
+- type: Blog
+  url: https://centrical.com/resources/?_cat=blog
+- type: Pricing
+  url: https://centrical.com/get-pricing/
+- type: SignUp
+  url: https://centrical.com/request-a-demo/
+- type: TermsOfService
+  url: https://centrical.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://centrical.com/privacy/
+- type: GitHubOrganization
+  url: https://github.com/gameffective
+- type: Conformance
+  url: conformance/centrical-conformance.yml
+- type: Compliance
+  url: conformance/centrical-conformance.yml
+- type: LLMsTxt
+  url: llms/centrical-llms.txt
+x-enrichment:
+  date: '2026-08-09'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Centrical's integration/API reference lives only inside its Zendesk help center — the anonymous
+    Help Center API returns 401 "Couldn't authenticate you", so the articles require an active
+    customer sign-in, and centrical.com's 197-page sitemap contains no developer, API or docs page
+    at all.
+  evidence:
+  - url: https://support.centrical.com/api/v2/help_center/en-us/articles.json
+    status: 401
+  - url: https://centrical.com/openapi.json
+    status: 404
+  - url: https://centrical.com/.well-known/agent-card.json
+    status: 404
+  - url: https://centrical.com/customer-resources/
+    status: 200
+  checked: '2026-08-09'

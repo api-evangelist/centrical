@@ -1,0 +1,79 @@
+# Centrical
+
+> Centrical (legally Biz-Effective Ltd., founded in Israel in 2013 as GamEffective and rebranded in
+> 2019) sells a performance-experience platform for frontline and contact-center employees, combining
+> gamification, personalized microlearning, real-time performance management, AI-assisted coaching,
+> quality management and voice-of-the-employee surveys. Centrical is integration-heavy rather than
+> developer-facing: it ingests KPI and activity data from CRM, POS, telephony, WFM, VoC and
+> contact-center systems over API, SFTP and email.
+
+Generated: 2026-08-09
+Method: generated
+Source: apis.yml + artifacts in this repository (API Evangelist profile — not published by Centrical)
+
+## API surface
+
+Centrical publishes **no public developer portal, API reference, OpenAPI/Swagger definition, GraphQL
+endpoint, MCP server, or A2A agent card.** Centrical's marketing describes a REST API used for
+real-time data ingestion and updates, and packaged integrations with Amazon Connect / Contact Lens,
+Salesforce and Microsoft Teams, but the technical documentation for those interfaces is available to
+contracted customers only through the Centrical support portal, which requires a sign-in.
+
+Probed 2026-08-09 (all misses):
+
+- https://centrical.com/openapi.json — 404
+- https://centrical.com/swagger.json — 404
+- https://centrical.com/api-docs — 404
+- https://centrical.com/graphql — 404
+- https://centrical.com/llms.txt — 404
+- https://centrical.com/.well-known/agent-card.json — 404
+- https://centrical.com/.well-known/openid-configuration — 404
+- https://support.centrical.com/api/v2/help_center/articles.json — 401 (restricted help center)
+- api.centrical.com, docs.centrical.com, developer.centrical.com — no DNS record
+
+## Product
+
+- [Platform overview](https://centrical.com/platform/)
+- [Gamification](https://centrical.com/platform/gamification/)
+- [Microlearning](https://centrical.com/platform/microlearning/)
+- [Performance management](https://centrical.com/platform/performance-management/)
+- [Coaching](https://centrical.com/platform/coaching/)
+- [Quality management](https://centrical.com/platform/quality-management/)
+- [Voice of the employee](https://centrical.com/platform/voice-of-the-employee/)
+- [MegAI](https://centrical.com/platform/megai/)
+
+## Integrations
+
+- [Partner ecosystem](https://centrical.com/partner-ecosystem/)
+- [AWS / Amazon Connect + Contact Lens integration](https://centrical.com/aws-partner/)
+- [Salesforce gamification](https://centrical.com/solutions/solutions-by-use-case/sales/salesforce-gamification/)
+- [Microsoft Teams gamification](https://centrical.com/solutions/solutions-by-use-case-2/microsoft-teams-gamification/)
+- [SuccessFactors gamification](https://centrical.com/solutions/solutions-by-use-case-2/successfactors-gamification/)
+
+## Security and compliance
+
+- [Enterprise-level security](https://centrical.com/enterprise-level-security/) — ISO/IEC 27001,
+  SOC 2 Type II (audited by EY, report on request only), GDPR, Cloud Security Alliance STAR registry
+- [GDPR](https://centrical.com/gdpr-compliant/)
+- [CCPA](https://centrical.com/ccpa/)
+- Security/privacy contact: privacy@centrical.com
+- No published vulnerability disclosure policy, bug bounty, security.txt, or trust center
+
+## Company
+
+- [Website](https://centrical.com/)
+- [About](https://centrical.com/about-us/)
+- [Support portal](https://support.centrical.com/hc/en-us) — sign-in required
+- [Blog](https://centrical.com/resources/?_cat=blog)
+- [Pricing](https://centrical.com/get-pricing/)
+- [Request a demo](https://centrical.com/request-a-demo/)
+- [Terms and conditions](https://centrical.com/terms-and-conditions/)
+- [Privacy policy](https://centrical.com/privacy/)
+- [GitHub organization](https://github.com/gameffective) — 6 public repos, all internal tooling, no
+  client SDK or API artifact
+
+## Optional
+
+- No first-party client libraries were found on npm, PyPI, RubyGems, NuGet or Maven Central
+- No public Postman workspace or collection
+- No status page, changelog, or public roadmap

@@ -1,0 +1,74 @@
+generated: '2026-08-09'
+method: searched
+source: https://centrical.com/enterprise-level-security/
+docs:
+- https://centrical.com/enterprise-level-security/
+- https://centrical.com/privacy/
+- https://centrical.com/gdpr-compliant/
+- https://centrical.com/ccpa/
+legal_entity: Biz-Effective Ltd.
+note: >-
+  Centrical publishes a named compliance and certification program on its public security page, but
+  publishes no public API contract, so none of the API-level protocol conformance assertions below
+  could be verified. Conformance rows marked conforms:false are recorded as UNVERIFIED absences of
+  public evidence, not as failures — Centrical's integration API is documented to contracted
+  customers only.
+standards:
+- id: iso-27001
+  name: ISO/IEC 27001 Information Security Management
+  conforms: true
+  evidence: >-
+    "Centrical (Biz-Effective Ltd.) has the International Organization for Standardization (ISO)
+    certification for Information Security Management: ISO/IEC 27001."
+  source: https://centrical.com/enterprise-level-security/
+- id: soc2-type-ii
+  name: SOC 2 Type II
+  conforms: true
+  evidence: >-
+    "Centrical has been audited by Ernest Young and provided a report on its compliance with
+    Service Organization Control (SOC) 2 type II." Report available on request to
+    privacy@centrical.com — it is not published.
+  source: https://centrical.com/enterprise-level-security/
+- id: gdpr
+  name: EU General Data Protection Regulation
+  conforms: true
+  evidence: >-
+    "With customers in almost every country in the world, Centrical adheres to the General Data
+    Protection Regulation (GDPR)." Dedicated GDPR page published at /gdpr-compliant/.
+  source: https://centrical.com/gdpr-compliant/
+- id: csa-star
+  name: Cloud Security Alliance STAR Registry
+  conforms: true
+  evidence: >-
+    "Centrical is on the Security Trust Assurance and Risk (STAR) registry of the Cloud Security
+    Alliance (CSA)."
+  source: https://centrical.com/enterprise-level-security/
+- id: ccpa
+  name: California Consumer Privacy Act
+  conforms: true
+  evidence: Dedicated CCPA disclosure page published at https://centrical.com/ccpa/.
+  source: https://centrical.com/ccpa/
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No public authentication documentation. /.well-known/oauth-authorization-server and
+    /.well-known/openid-configuration both returned 404 on centrical.com (probed 2026-08-09).
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: >-
+    Centrical markets enterprise SSO to customers, but publishes no OIDC discovery document;
+    https://centrical.com/.well-known/openid-configuration returned 404 (probed 2026-08-09).
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: No public OpenAPI or error reference to assert an error envelope against.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: https://centrical.com/.well-known/security.txt returned 404 (probed 2026-08-09).
+- id: rfc8594
+  name: RFC 8594 Sunset header / deprecation signaling
+  conforms: false
+  evidence: No public versioning or deprecation policy published.

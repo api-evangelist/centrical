@@ -1,0 +1,30 @@
+generated: '2026-08-10'
+method: searched
+source: https://centrical.com/ + https://support.centrical.com/hc/en-us
+note: >-
+  An honest zero. Centrical publishes no rate limits, quotas, throttling policy, or 429 contract
+  anywhere on its public surface. The whole 197-page marketing sitemap carries no developer, API or
+  docs page; the Zendesk help center that holds the integration documentation returns 401 from its
+  anonymous Help Center API and 403 from the web UI; and the live API host api.centrical.me answers
+  403 ForbiddenException to every anonymous request, so no rate-limit response headers could be
+  observed on the wire either. This is a documentation gap Centrical could close, not an absence of
+  limits — a multi-tenant ingestion API almost certainly enforces them.
+
+limit_count: 0
+limits: []
+
+response_headers:
+  observed: []
+  documented: []
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header could be observed. Anonymous requests to
+    api.centrical.me are rejected at the edge with an AWS API Gateway ForbiddenException carrying no
+    rate-limit headers, and no authenticated credentials are available to this pipeline.
+
+exhaustion_status_code: unknown
+
+probes:
+- {url: 'https://api.centrical.me/', status: 403, note: AWS API Gateway ForbiddenException, no rate-limit headers returned}
+- {url: 'https://support.centrical.com/api/v2/help_center/en-us/articles.json', status: 401, note: "Couldn't authenticate you"}
+- {url: 'https://support.centrical.com/hc/en-us', status: 403, note: help center web UI gated}
+- {url: 'https://centrical.com/page-sitemap.xml', status: 200, note: 197 pages, none developer/API/docs related}

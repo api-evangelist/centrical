@@ -1,4 +1,4 @@
-generated: '2026-08-09'
+generated: '2026-08-10'
 method: searched
 source: https://centrical.com/enterprise-level-security/
 docs:
@@ -20,6 +20,14 @@ standards:
   evidence: >-
     "Centrical (Biz-Effective Ltd.) has the International Organization for Standardization (ISO)
     certification for Information Security Management: ISO/IEC 27001."
+  source: https://centrical.com/enterprise-level-security/
+- id: iso-27701
+  name: ISO/IEC 27701 Privacy Information Management
+  conforms: true
+  evidence: >-
+    Listed as a certification badge on Centrical's public enterprise security page alongside ISO/IEC
+    27001. Found on the round-2 re-read of the page (2026-08-10); the certificate itself is not
+    published.
   source: https://centrical.com/enterprise-level-security/
 - id: soc2-type-ii
   name: SOC 2 Type II

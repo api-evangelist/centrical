@@ -1,0 +1,53 @@
+generated: '2026-08-10'
+method: searched
+source: registry.npmjs.org, pypi.org, rubygems.org, crates.io, nuget.org, packagist.org, api.github.com
+note: >-
+  A recorded absence, swept twice. Centrical ships no first-party client library in any public
+  package registry, under either its current name or its former one (GamEffective). Every registry
+  below answers unauthenticated and every one returned an empty result or a 404. Because there are
+  zero packages, NO `SDKs` pointer is emitted in apis.yml — the sdk_count checks must read a real
+  client library, and crediting one here would be false.
+
+package_count: 0
+official_package_count: 0
+packages: []
+
+registries_searched:
+- {registry: npm, query: centrical, endpoint: 'https://registry.npmjs.org/-/v1/search?text=centrical', results: 0}
+- {registry: npm, query: gameffective, endpoint: 'https://registry.npmjs.org/-/v1/search?text=gameffective', results: 0}
+- {registry: pypi, query: centrical, status: 404}
+- {registry: pypi, query: centrical-api, status: 404}
+- {registry: pypi, query: gameffective, status: 404}
+- {registry: rubygems, query: centrical, status: 404}
+- {registry: rubygems, query: gameffective, status: 404}
+- {registry: nuget, query: centrical, results: 0}
+- {registry: packagist, query: centrical, results: 0, note: only unrelated packages matched the substring "centraliz"}
+- {registry: crates.io, query: centrical, status: 403, note: crates.io rejected the unauthenticated user-agent; no Rust client is plausible for this product category}
+- {registry: maven-central, query: centrical, results: 0}
+
+source_repositories:
+- org: https://github.com/gameffective
+  name: Centrical (legacy GamEffective org)
+  public_repos: 6
+  client_sdk: false
+  repos:
+  - {name: ParallelTestRunner, language: 'C#', last_push: '2022-01-25', relevant: false}
+  - {name: MSTestExtractFailedTestNames, language: 'C#', last_push: '2017-12-17', relevant: false}
+  - {name: docker-node-pm2-git, language: Shell, last_push: '2018-03-31', relevant: false}
+  - {name: itunes-connect-slack, language: JavaScript, last_push: '2018-03-15', relevant: false}
+  - {name: render_csv, language: Ruby, last_push: '2020-07-23', relevant: false}
+  - {name: GPT-3-Encoder, language: JavaScript, last_push: '2023-03-05', relevant: false, note: fork of a third-party BPE encoder}
+  note: >-
+    All six public repos are internal build/test tooling or forks, none is a client SDK or API
+    artifact, and the newest was last pushed in 2023.
+- org: https://github.com/centrical
+  public_repos: 0
+  client_sdk: false
+  note: The org exists and is claimed by Centrical (website centrical.com) but publishes nothing.
+
+x-evidence:
+- {url: 'https://registry.npmjs.org/-/v1/search?text=centrical', status: 200, result: '0 packages'}
+- {url: 'https://pypi.org/pypi/centrical/json', status: 404}
+- {url: 'https://rubygems.org/api/v1/gems/centrical.json', status: 404}
+- {url: 'https://api.github.com/orgs/gameffective/repos', status: 200, result: '6 repos, none an SDK'}
+- {url: 'https://api.github.com/orgs/centrical/repos', status: 200, result: '0 repos'}

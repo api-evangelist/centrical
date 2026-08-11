@@ -7,29 +7,62 @@
 > developer-facing: it ingests KPI and activity data from CRM, POS, telephony, WFM, VoC and
 > contact-center systems over API, SFTP and email.
 
-Generated: 2026-08-09
+Generated: 2026-08-10
 Method: generated
-Source: apis.yml + artifacts in this repository (API Evangelist profile — not published by Centrical)
+Source: apis.yml + artifacts in this repository (API Evangelist profile — NOT published by Centrical)
 
 ## API surface
 
-Centrical publishes **no public developer portal, API reference, OpenAPI/Swagger definition, GraphQL
-endpoint, MCP server, or A2A agent card.** Centrical's marketing describes a REST API used for
-real-time data ingestion and updates, and packaged integrations with Amazon Connect / Contact Lens,
-Salesforce and Microsoft Teams, but the technical documentation for those interfaces is available to
-contracted customers only through the Centrical support portal, which requires a sign-in.
+**An API exists and is completely gated.** Centrical publishes no public developer portal, API
+reference, OpenAPI/Swagger definition, GraphQL endpoint, MCP server or A2A agent card — but two
+independent public signals confirm a production API:
 
-Probed 2026-08-09 (all misses):
+1. **`https://api.centrical.me`** is a live AWS API Gateway custom domain
+   (`d-zs53r91md7.execute-api.us-east-1.amazonaws.com`). Every anonymous request is rejected by the
+   API itself with `403 {"message":"Forbidden"}` and `x-amzn-errortype: ForbiddenException`; paths
+   under `/v1/` return `{"message":"Missing Authentication Token"}`. Those are an API refusing a
+   caller, not a missing host.
+2. **Centrical's own status page names the API as a production component.** A "Core Api" component
+   is listed in all three regional groups (North America, Europe, APAC), and the "Web Application"
+   component is described by Centrical as "Front End, Admin Console and **Management API**".
 
+The technical documentation for those interfaces is available to contracted customers only, through
+the Zendesk help center at support.centrical.com, which is sign-in gated.
+
+Probed 2026-08-10 (all misses unless noted):
+
+- https://api.centrical.me/openapi.json — 403 (API Gateway Forbidden)
+- https://api.centrical.me/swagger.json — 403
+- https://api.centrical.me/graphql — 403
+- https://api.centrical.me/.well-known/openid-configuration — 403
+- https://api.centrical.me/.well-known/agent-card.json — 403
+- https://docs.centrical.me/ — 302 to /error/notenant (this is the tenant customer app, NOT docs)
+- https://powerup.centrical.me/.well-known/agent-card.json — 200 but an SPA HTML shell, rejected
 - https://centrical.com/openapi.json — 404
-- https://centrical.com/swagger.json — 404
-- https://centrical.com/api-docs — 404
-- https://centrical.com/graphql — 404
 - https://centrical.com/llms.txt — 404
 - https://centrical.com/.well-known/agent-card.json — 404
-- https://centrical.com/.well-known/openid-configuration — 404
-- https://support.centrical.com/api/v2/help_center/articles.json — 401 (restricted help center)
+- https://support.centrical.com/hc/en-us — 403 (help center web UI gated)
+- https://support.centrical.com/api/v2/help_center/en-us/articles.json — 401 "Couldn't authenticate you"
 - api.centrical.com, docs.centrical.com, developer.centrical.com — no DNS record
+
+Inferred (not documented) authentication headers, read from the CORS `Access-Control-Allow-Headers`
+that every Centrical app host returns: `x-api-key`, `jwt`, `authorization`, `ssoToken`, `Signature`,
+plus platform headers `centri-version` and `centri-request-id`. See
+`authentication/centrical-authentication.yml` — this is an observed header allowlist, not a
+published contract.
+
+## Operational surface
+
+- [Status page](https://centrical.statuspage.io/) — a real Atlassian Statuspage, **not linked from
+  centrical.com**; found by probing. Machine-readable:
+  - https://centrical.statuspage.io/api/v2/summary.json
+  - https://centrical.statuspage.io/api/v2/incidents.json
+  - https://centrical.statuspage.io/history.rss
+- Deployment regions published as component groups: North America, Europe, APAC, plus Global
+  (Analytics Service, Secure Ftp Service, MS Teams BOT)
+- 50 dated incidents published; recurring themes are Analytics Service outages and database
+  connection failures. Most recent at probe time: 2026-07-28
+- No SLA, uptime target, versioning policy, deprecation policy or public changelog
 
 ## Product
 
@@ -46,18 +79,29 @@ Probed 2026-08-09 (all misses):
 
 - [Partner ecosystem](https://centrical.com/partner-ecosystem/)
 - [AWS / Amazon Connect + Contact Lens integration](https://centrical.com/aws-partner/)
-- [Salesforce gamification](https://centrical.com/solutions/solutions-by-use-case/sales/salesforce-gamification/)
+- [Centrical Connector for Amazon Connect on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom)
+- [Centrical for Salesforce on AppExchange](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N30000000qFpyEAE)
 - [Microsoft Teams gamification](https://centrical.com/solutions/solutions-by-use-case-2/microsoft-teams-gamification/)
 - [SuccessFactors gamification](https://centrical.com/solutions/solutions-by-use-case-2/successfactors-gamification/)
+
+## Pricing
+
+- [Get pricing](https://centrical.com/get-pricing/) — contact-sales form, no tiers or prices
+- The only publicly posted Centrical price is the AWS Marketplace listing: **Standard Plan,
+  "Centrical Platform - 300 users/year", $74,500.00 USD, 12-month contract**, SaaS delivery,
+  no refunds. No free tier, trial, self-serve signup or developer plan.
 
 ## Security and compliance
 
 - [Enterprise-level security](https://centrical.com/enterprise-level-security/) — ISO/IEC 27001,
-  SOC 2 Type II (audited by EY, report on request only), GDPR, Cloud Security Alliance STAR registry
-- [GDPR](https://centrical.com/gdpr-compliant/)
+  ISO/IEC 27701, SOC 2 Type II (audited by Ernst & Young, report on request only), GDPR, Cloud
+  Security Alliance STAR registry
+- [GDPR](https://centrical.com/gdpr-compliant/) — states all user data for EU customers is stored and
+  processed on EU-hosted servers only
 - [CCPA](https://centrical.com/ccpa/)
 - Security/privacy contact: privacy@centrical.com
-- No published vulnerability disclosure policy, bug bounty, security.txt, or trust center
+- No published vulnerability disclosure policy, bug bounty, security.txt or hosted trust center
+- centrical.com HSTS max-age is 300s; api.centrical.me sends no HSTS. Neither domain has DNSSEC or CAA
 
 ## Company
 
@@ -65,15 +109,16 @@ Probed 2026-08-09 (all misses):
 - [About](https://centrical.com/about-us/)
 - [Support portal](https://support.centrical.com/hc/en-us) — sign-in required
 - [Blog](https://centrical.com/resources/?_cat=blog)
-- [Pricing](https://centrical.com/get-pricing/)
 - [Request a demo](https://centrical.com/request-a-demo/)
 - [Terms and conditions](https://centrical.com/terms-and-conditions/)
 - [Privacy policy](https://centrical.com/privacy/)
-- [GitHub organization](https://github.com/gameffective) — 6 public repos, all internal tooling, no
-  client SDK or API artifact
+- [GitHub organization](https://github.com/gameffective) — 6 public repos, all internal tooling or
+  forks, newest pushed 2023, no client SDK or API artifact. The `github.com/centrical` org exists but
+  has 0 public repos
 
 ## Optional
 
-- No first-party client libraries were found on npm, PyPI, RubyGems, NuGet or Maven Central
+- No first-party client libraries on npm, PyPI, RubyGems, NuGet, Packagist or Maven Central
+  (searched under both "centrical" and "gameffective")
 - No public Postman workspace or collection
-- No status page, changelog, or public roadmap
+- No rate limits, quotas or throttling policy published anywhere

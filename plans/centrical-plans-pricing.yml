@@ -1,0 +1,55 @@
+generated: '2026-08-10'
+method: searched
+source: https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom
+note: >-
+  Centrical's own pricing page (https://centrical.com/get-pricing/) publishes NO price and NO tiers —
+  it is a contact-sales lead form only. The one publicly priced Centrical plan on the open web is its
+  AWS Marketplace listing, "Centrical Connector for Amazon Connect", where AWS requires the seller to
+  post a real contract price. That single dimension is recorded below verbatim. It is a SaaS
+  contract price for the platform, not an API metering plan — Centrical publishes no API rate/quota
+  plans of any kind, and no free or trial developer tier exists.
+
+plan_count: 1
+
+plans:
+- name: Standard Plan
+  channel: AWS Marketplace
+  product: Centrical Connector for Amazon Connect
+  url: https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom
+  dimension: Centrical Platform - 300 users/year
+  price: 74500.00
+  currency: USD
+  billing_period: 12-month contract
+  unit: users
+  included_quota: 300 users/year
+  overage: >-
+    Not self-serve. Users enrolled beyond the 300-user commitment require direct coordination with
+    Centrical; the vendor states "pricing is based on the duration and terms of your contract."
+  refunds: "Centrical does not currently offer refunds."
+  delivery_method: SaaS
+  support_contact: AWS-Marketplace@centrical.com
+  api_limits_attached: none published
+
+sales_channels:
+- name: Direct
+  url: https://centrical.com/get-pricing/
+  pricing_published: false
+  note: Contact-sales lead form; no tiers, prices, quotas or trial.
+- name: AWS Marketplace
+  url: https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom
+  pricing_published: true
+  note: One priced private-offer-style dimension, listed above.
+- name: Salesforce AppExchange
+  url: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N30000000qFpyEAE
+  pricing_published: false
+  note: '"Centrical for Salesforce" listing; pricing is contact-vendor.'
+
+free_tier: false
+trial: false
+self_serve_signup: false
+developer_plan: false
+
+x-evidence:
+- {url: 'https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom', status: 200, checked: '2026-08-10'}
+- {url: 'https://centrical.com/get-pricing/', status: 200, checked: '2026-08-10'}
+- {url: 'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N30000000qFpyEAE', status: 200, checked: '2026-08-10'}

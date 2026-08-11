@@ -1,0 +1,139 @@
+generated: '2026-08-10'
+method: searched
+source: https://centrical.statuspage.io/
+note: >-
+  Centrical operates a real, public Atlassian Statuspage that is NOT linked from centrical.com — the
+  197-page marketing sitemap contains no status, developer or docs page, so this was found by probing
+  the vendor's statuspage.io subdomain rather than from any published link. It is the only public
+  operational surface Centrical serves, and it is the strongest public evidence that a production API
+  exists: three of its regional component groups each list a "Core Api" component, and the "Web
+  Application" component is described by Centrical as "Front End, Admin Console and Management API".
+  No versioning policy, deprecation policy, Sunset/Deprecation header support, SLA document or public
+  changelog was found — those live in the customer-only Zendesk help center (401/403 anonymously).
+
+status_page:
+  url: https://centrical.statuspage.io/
+  provider: Atlassian Statuspage
+  page_id: nljcfgkphgpp
+  api:
+    summary: https://centrical.statuspage.io/api/v2/summary.json
+    incidents: https://centrical.statuspage.io/api/v2/incidents.json
+    components: https://centrical.statuspage.io/api/v2/components.json
+    history_rss: https://centrical.statuspage.io/history.rss
+  machine_readable: true
+  overall_status_at_probe: All Systems Operational
+  linked_from_website: false
+
+# Component topology exactly as Centrical publishes it. Four groups: three deployment regions
+# plus a Global group. "Core Api" is a first-class production component in every region.
+regions:
+- name: North America
+  components: [Web Application, Import Service, Simulation Service, SCROM Engine, Online Store, Conversation, Core Api]
+- name: Europe
+  components: [Web Application, Import Service, Simulation Service, SCORM Engine, Online Store, Conversation, Core Api]
+- name: APAC
+  components: [Web Client Application, Import Service, Simulation Service, SCORM Engine, Online Store, Core Api]
+- name: Global
+  components: [Analytics Service, Secure Ftp Service, MS Teams BOT]
+
+components:
+- name: Core Api
+  regions: [North America, Europe, APAC]
+  description: Core Api
+  status_at_probe: operational
+- name: Web Application
+  regions: [North America, Europe]
+  description: Front End, Admin Console and Management API
+  status_at_probe: operational
+- name: Web Client Application
+  regions: [APAC]
+  status_at_probe: operational
+- name: Import Service
+  regions: [North America, Europe, APAC]
+  description: Import Service Production
+  status_at_probe: operational
+- name: Secure Ftp Service
+  regions: [Global]
+  description: Secure Ftp import service
+  status_at_probe: operational
+- name: Analytics Service
+  regions: [Global]
+  status_at_probe: operational
+- name: Simulation Service
+  regions: [North America, Europe, APAC]
+  status_at_probe: operational
+- name: SCORM Engine
+  regions: [North America, Europe, APAC]
+  description: SCORM engine enables uploading and viewing SCORM compliant packages
+  status_at_probe: operational
+- name: Online Store
+  regions: [North America, Europe, APAC]
+  description: Online Virtual Store
+  status_at_probe: operational
+- name: Conversation
+  regions: [North America, Europe]
+  status_at_probe: operational
+- name: MS Teams BOT
+  regions: [Global]
+  status_at_probe: operational
+
+# Incident history is published and dated — the closest thing Centrical serves to a public
+# operational changelog. 50 incidents were returned by the incidents API at probe time.
+incident_history:
+  published: true
+  url: https://centrical.statuspage.io/history.rss
+  incidents_returned: 50
+  most_recent: '2026-07-28'
+  recurring_themes:
+  - Analytics Service Outage
+  - Database connection failure
+  - Simulation Service Outage
+  - Performance Degredation
+  recent:
+  - {name: Analytics Service Outage, created: '2026-07-28', resolved: '2026-07-28', impact: none}
+  - {name: Analytics Service Outage, created: '2026-07-26', resolved: '2026-07-26', impact: none}
+  - {name: Analytics Service Outage, created: '2026-07-25', resolved: '2026-07-26', impact: none}
+  - {name: Database connection failure, created: '2026-07-22', resolved: '2026-07-22', impact: none}
+  - {name: Performance Degredation, created: '2026-07-20', resolved: '2026-07-20', impact: none}
+  - {name: Analytics Service Outage, created: '2026-06-21', resolved: '2026-06-21', impact: none}
+  - {name: Simulation Service Outage, created: '2026-06-07', resolved: '2026-06-07', impact: none}
+  - {name: Database connection failure, created: '2026-06-03', resolved: '2026-06-03', impact: none}
+
+versioning:
+  scheme: unknown
+  published: false
+  note: >-
+    No public versioning policy. A `centri-version` request header is advertised in the
+    Access-Control-Allow-Headers of every Centrical application host (see
+    authentication/centrical-authentication.yml), which implies header-based versioning, but
+    Centrical publishes no document describing it.
+
+deprecation:
+  policy_url: null
+  published: false
+  sunset_header: unknown
+  note: No deprecation policy, Sunset/Deprecation header commitment (RFC 8594) or EOL schedule is public.
+
+sla:
+  url: null
+  published: false
+  uptime_target: null
+  note: >-
+    No SLA or uptime target is published. The Statuspage reports current component state but
+    publishes no historical uptime percentage.
+
+changelog:
+  published: false
+  note: >-
+    No public product changelog or release-notes page. Release notes are distributed through the
+    Zendesk help center at support.centrical.com, which returns 401 from the anonymous Help Center
+    API and 403 from the web UI.
+
+deprecated_operations: []
+
+x-evidence:
+- {url: 'https://centrical.statuspage.io/', status: 200, checked: '2026-08-10'}
+- {url: 'https://centrical.statuspage.io/api/v2/summary.json', status: 200, checked: '2026-08-10'}
+- {url: 'https://centrical.statuspage.io/history.rss', status: 200, checked: '2026-08-10'}
+- {url: 'https://status.centrical.com/', status: 0, checked: '2026-08-10', note: NXDOMAIN — no vanity status host}
+- {url: 'https://support.centrical.com/hc/en-us', status: 403, checked: '2026-08-10', note: help center gated}

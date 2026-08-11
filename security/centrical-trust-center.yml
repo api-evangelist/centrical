@@ -1,0 +1,85 @@
+generated: '2026-08-10'
+method: searched
+probe: true
+source: https://centrical.com/enterprise-level-security/
+note: >-
+  Centrical serves no trust.centrical.com or security.centrical.com host (both NXDOMAIN) and no
+  hosted trust-center product. What it does publish is a single public security and compliance page
+  at the non-standard path /enterprise-level-security/ that names its certifications outright, plus
+  dedicated GDPR and CCPA disclosure pages. The automated probe
+  (0-working/probe-security-programs.py) missed it because it checks /trust, /security and
+  /compliance — this was found by reading the 197-URL page sitemap. Certifications are named but the
+  underlying reports are NOT published: the SOC 2 Type II report is available only on request to
+  privacy@centrical.com.
+
+url: https://centrical.com/enterprise-level-security/
+hosted_trust_center: false
+legal_entity: Biz-Effective Ltd.
+
+certifications:
+- id: iso-27001
+  name: ISO/IEC 27001
+  scope: Information Security Management
+  evidence: >-
+    "ISO certification means customers can be confident that Centrical protects Personally
+    Identifiable Information in the cloud to the highest standards."
+  report_published: false
+- id: iso-27701
+  name: ISO/IEC 27701
+  scope: Privacy Information Management
+  evidence: Listed as a certification badge on the enterprise security page.
+  report_published: false
+- id: soc2-type-ii
+  name: SOC 2 Type II
+  auditor: Ernst & Young
+  evidence: >-
+    "Centrical has been audited by Ernest Young and provided a report on its compliance with
+    Service Organization Control (SOC) 2 type II."
+  report_published: false
+  report_access: On request to privacy@centrical.com
+- id: csa-star
+  name: Cloud Security Alliance STAR Registry
+  evidence: >-
+    "Centrical is on the Security Trust Assurance and Risk (STAR) registry of the Cloud Security
+    Alliance (CSA)."
+  report_published: false
+- id: gdpr
+  name: EU General Data Protection Regulation
+  evidence: >-
+    "With customers in almost every country in the world, Centrical adheres to the General Data
+    Protection Regulation (GDPR)." Dedicated page at /gdpr-compliant/.
+  url: https://centrical.com/gdpr-compliant/
+- id: ccpa
+  name: California Consumer Privacy Act
+  evidence: Dedicated CCPA disclosure page.
+  url: https://centrical.com/ccpa/
+
+privacy_program:
+  dpa: true
+  sub_processor_list: true
+  vendor_risk_management: true
+  data_subject_request_process: true
+  annual_privacy_training: true
+  eu_data_residency: >-
+    "Verified that all user data is stored and processes on EU hosted servers only" — stated as a
+    GDPR compliance measure. Corroborated by the Europe region component group on
+    centrical.statuspage.io.
+
+contact:
+  privacy: privacy@centrical.com
+
+not_published:
+- Vulnerability disclosure or responsible-disclosure policy
+- Bug bounty program (no HackerOne / Bugcrowd / Intigriti presence found)
+- /.well-known/security.txt (RFC 9116) — returns 404 on centrical.com
+- Penetration test summary
+- PCI DSS, HIPAA or FedRAMP authorization
+- Uptime/SLA commitment
+
+x-evidence:
+- {url: 'https://centrical.com/enterprise-level-security/', status: 200, checked: '2026-08-10'}
+- {url: 'https://centrical.com/gdpr-compliant/', status: 200, checked: '2026-08-09'}
+- {url: 'https://centrical.com/ccpa/', status: 200, checked: '2026-08-09'}
+- {url: 'https://centrical.com/.well-known/security.txt', status: 404, checked: '2026-08-10'}
+- {url: 'https://trust.centrical.com/', status: 0, checked: '2026-08-10', note: NXDOMAIN}
+- {url: 'https://security.centrical.com/', status: 0, checked: '2026-08-10', note: NXDOMAIN}

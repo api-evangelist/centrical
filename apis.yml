@@ -18,7 +18,7 @@ url: https://raw.githubusercontent.com/api-evangelist/centrical/refs/heads/main/
 image: https://centrical.com/wp-content/themes/centrical-master/assets/img/favicon/apple-touch-icon.png
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-09'
 modified: '2026-08-10'
 tags:

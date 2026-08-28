@@ -15,6 +15,17 @@ description: 'Centrical (legally Biz-Effective Ltd., founded in Israel in 2013 a
   and Centrical''s public status page lists a "Core Api" component in its North America, Europe and
   APAC regions alongside a "Management API".'
 url: https://raw.githubusercontent.com/api-evangelist/centrical/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://centrical.com/wp-content/themes/centrical-master/assets/img/favicon/apple-touch-icon.png
 x-type: company
 x-source: harvest:secondary-market

@@ -26,6 +26,21 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: paid
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Requires approval
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - rate-limits
+  - security
+  generated: '2026-09-03'
+  method: derived
 image: https://centrical.com/wp-content/themes/centrical-master/assets/img/favicon/apple-touch-icon.png
 x-type: company
 x-source: harvest:secondary-market

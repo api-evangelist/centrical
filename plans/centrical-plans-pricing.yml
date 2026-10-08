@@ -53,3 +53,18 @@ x-evidence:
 - {url: 'https://aws.amazon.com/marketplace/pp/prodview-r2rpehyukrkom', status: 200, checked: '2026-08-10'}
 - {url: 'https://centrical.com/get-pricing/', status: 200, checked: '2026-08-10'}
 - {url: 'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N30000000qFpyEAE', status: 200, checked: '2026-08-10'}
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  units:
+  - seat
+  plans:
+  - name: Standard Plan
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods: []

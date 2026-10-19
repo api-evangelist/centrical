@@ -28,3 +28,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: centrical-genesys-own
+  label: Genesys (own)
+  partner: genesys
+  partner_name: Genesys (own)
+  category: businessOptimization|businessIntelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://appfoundry.genesys.com/filter/genesyscloud/listing/3851f29f-eb2a-4912-babe-45ea75e2ec90
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

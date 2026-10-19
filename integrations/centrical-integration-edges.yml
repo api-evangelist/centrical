@@ -1,6 +1,7 @@
 generated: '2026-10-13'
 method: searched
 checked:
+- genesys/integrations/genesys-integration-edges.yml
 - https://aws.amazon.com/marketplace/
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 marketplace_apps: []
@@ -39,5 +40,26 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Certified
+- partner_name: Genesys (own)
+  partner: genesys
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appfoundry.genesys.com/filter/genesyscloud/listing/3851f29f-eb2a-4912-babe-45ea75e2ec90
+  mirror_of: genesys/integrations/genesys-integration-edges.yml
+  apps:
+  - Centrical
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: businessOptimization|businessIntelligence
+  publisher_verified:
+  - attestation:gdpr
+  - attestation:iso
+  - attestation:soc2
 source:
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
